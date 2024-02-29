@@ -1,0 +1,27 @@
+name: "Dependabot vulerabilities notification to Slack"
+
+on:
+  pull_request:
+    # only this branch
+    branches:
+      - main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Based on this guide: https://www.teracloud.io/single-post/dependabot-get-slack-notifications-using-github-actions
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: Iv1.bae427613420b400
+          application_private_key: ${{ secrets.YOUR_APP_PRIVATE_KEY }}
+
+      - uses: kunalnagarco/action-cve@v1.7.13
+        with:
+          token: ${{ steps.get_workflow_token.outputs.token }}
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL}}
