@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Get Token
         id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v1
+        uses: peter-murray/workflow-application-token-action@v3
         with:
           application_id: Iv1.bae427613420b400
           application_private_key: ${{ secrets.YOUR_APP_PRIVATE_KEY }}
