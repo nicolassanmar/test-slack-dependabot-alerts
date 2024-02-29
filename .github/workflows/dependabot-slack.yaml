@@ -14,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v3
-        with:
-          application_id: Iv1.bae427613420b400
-          application_private_key: ${{ secrets.YOUR_APP_PRIVATE_KEY }}
+      #   - name: Get Token
+      #     id: get_workflow_token
+      #     uses: peter-murray/workflow-application-token-action@v3
+      #     with:
+      #       application_id: Iv1.bae427613420b400
+      #       application_private_key: ${{ secrets.YOUR_APP_PRIVATE_KEY }}
 
       - uses: kunalnagarco/action-cve@v1.7.13
         with:
-          token: ${{ steps.get_workflow_token.outputs.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           slack_webhook: ${{ secrets.SLACK_WEBHOOK_URL}}
