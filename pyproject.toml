@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "test-slack-dependabot-alerts"
+version = "0.1.0"
+description = ""
+authors = ["nicolassanmar <nicolassanmar@gmail.com>"]
+readme = "README.md"
+packages = [{include = "test_slack_dependabot_alerts"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+# Has a security vulnerability
+aiohttp = "3.7.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
